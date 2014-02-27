@@ -31,6 +31,29 @@
 					<!--<import_before/>-->
 					<!--<import_after/>-->
 				</events>
+				<fieldmap>
+					<!-- BASIC ATTRIBUTES -->
+					<_attribute_set value="Default"/>
+					<sku field="sku"/>
+					<_type value="simple"/>
+					<!-- PRICES -->
+					<price field="price"/>
+					<!-- STATE -->
+					<status helper="wsu_sampleimport/import_state::resolveStatus"/>
+					<!-- INVENTORY -->
+					<qty field="stock_quantity"/>
+					<is_in_stock field="@attributes/active"/>
+					<manage_stock value="1"/>
+					<qty_increments value="1"/>
+					<!-- CONTENT -->
+					<name field="name"/>
+					<description field="description" defaultvalue="Description Comming"/>
+					<short_description field="description" defaultvalue="Description Comming"/>
+					<!-- TAX -->
+					<tax_class_id value="2"/>
+					<!-- MEDIA -->
+					<media_gallery helper="wsu_sampleimport/import_media::getMediaGallery"/>
+				</fieldmap>
 			</one_time_all_stock>
 		</ho_import>
 	</global>
