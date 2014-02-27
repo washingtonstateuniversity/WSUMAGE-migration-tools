@@ -15,10 +15,16 @@
 			<!-- where a profile lives -->
 			<one_time_all_stock>
 				<entity_type>catalog_product</entity_type>
+				<!--<schedule><cron_expr>0 2 * * *</cron_expr></schedule>-->
 				<source model="ho_import/source_adapter_xml">
 					<file>/var/import/products.xml</file>
 					<rootNode>products</rootNode>
 				</source>
+				<import_options>
+					<continue_after_errors>1</continue_after_errors>
+					<!--<ignore_duplicates>1</ignore_duplicates>-->
+					<partial_indexing>1</partial_indexing>
+				</import_options>
 			</one_time_all_stock>
 		</ho_import>
 	</global>
