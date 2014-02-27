@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Wsu_SampleImport>
+			<version>0.1.0</version>
+		</Wsu_sampleimport>
+	</modules>
+	<global>
+		<helpers>
+			<wsu_sampleimport>
+				<class>Wsu_SampleImport_Helper</class>
+			</wsu_sampleimport>
+		</helpers>
+		<ho_import>
+			<!-- where a profile lives -->
+			<one_time_all_stock>
+				<entity_type>catalog_product</entity_type>
+				<source model="ho_import/source_adapter_xml">
+					<file>/var/import/products.xml</file>
+					<rootNode>products</rootNode>
+				</source>
+			</one_time_all_stock>
+		</ho_import>
+	</global>
+</config>
