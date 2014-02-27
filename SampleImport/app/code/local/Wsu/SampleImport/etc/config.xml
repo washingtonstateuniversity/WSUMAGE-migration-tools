@@ -25,6 +25,12 @@
 					<!--<ignore_duplicates>1</ignore_duplicates>-->
 					<partial_indexing>1</partial_indexing>
 				</import_options>
+				<events>
+					<!--<source_row_fieldmap_before/>-->
+					<!--<source_row_fieldmap_after/>-->
+					<!--<import_before/>-->
+					<!--<import_after/>-->
+				</events>
 			</one_time_all_stock>
 		</ho_import>
 	</global>
