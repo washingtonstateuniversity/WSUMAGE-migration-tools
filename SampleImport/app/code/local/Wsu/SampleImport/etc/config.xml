@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Wsu_SampleImport>
+			<version>0.1.0</version>
+		</Wsu_sampleimport>
+	</modules>
+	<global>
+		<helpers>
+			<wsu_sampleimport>
+				<class>Wsu_SampleImport_Helper</class>
+			</wsu_sampleimport>
+		</helpers>
+		<ho_import>
+			<!-- where a profile lives -->
+			<one_time_all_stock>
+				<entity_type>catalog_product</entity_type>
+				<!--<schedule><cron_expr>0 2 * * *</cron_expr></schedule>-->
+				<source model="ho_import/source_adapter_xml">
+					<file>/var/import/products.xml</file>
+					<rootNode>products</rootNode>
+				</source>
+				<import_options>
+					<continue_after_errors>1</continue_after_errors>
+					<!--<ignore_duplicates>1</ignore_duplicates>-->
+					<partial_indexing>1</partial_indexing>
+				</import_options>
+				<events>
+					<!--<source_row_fieldmap_before/>-->
+					<!--<source_row_fieldmap_after/>-->
+					<!--<import_before/>-->
+					<!--<import_after/>-->
+				</events>
+				<fieldmap>
+					<!-- BASIC ATTRIBUTES -->
+					<_attribute_set value="Default"/>
+					<sku field="sku"/>
+					<_type value="simple"/>
+					<!-- PRICES -->
+					<price field="price"/>
+					<!-- STATE -->
+					<status helper="wsu_sampleimport/import_state::resolveStatus"/>
+					<!-- INVENTORY -->
+					<qty field="stock_quantity"/>
+					<is_in_stock field="@attributes/active"/>
+					<manage_stock value="1"/>
+					<qty_increments value="1"/>
+					<!-- CONTENT -->
+					<name field="name"/>
+					<description field="description" defaultvalue="Description Comming"/>
+					<short_description field="description" defaultvalue="Description Comming"/>
+					<!-- TAX -->
+					<tax_class_id value="2"/>
+					<!-- MEDIA -->
+					<media_gallery helper="wsu_sampleimport/import_media::getMediaGallery"/>
+				</fieldmap>
+			</one_time_all_stock>
+		</ho_import>
+	</global>
+</config>
